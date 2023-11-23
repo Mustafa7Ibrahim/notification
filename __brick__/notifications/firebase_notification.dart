@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/scheduler.dart' as sch;
+import 'package:archifolio/firebase_options.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'flutter_notification.dart';
 
 // annotate for vm entry point
 @pragma('vm:entry-point')
@@ -78,7 +79,7 @@ class FirebaseNotificationHandler {
 
     if (notification != null && android != null) {
       const androidNotificationDetails = AndroidNotificationDetails(
-        '0',
+        notificationChannelId,
         notificationChannelName,
         channelDescription: notificationChannelDescription,
         importance: Importance.max,

@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
@@ -8,7 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 /// The [NotificationAppLaunchDetails] class contains
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 /// Streams are created so that app can respond to notification-related events
 /// since the plugin is initialized in the `main` function
@@ -16,7 +16,8 @@ final StreamController<ReceivedNotification> didReceiveLocalNotificationStream =
     StreamController<ReceivedNotification>.broadcast();
 
 /// Streams are created so that app can respond to notification-related events
-final StreamController<String?> selectNotificationStream = StreamController<String?>.broadcast();
+final StreamController<String?> selectNotificationStream =
+    StreamController<String?>.broadcast();
 
 /// The [NotificationAppLaunchDetails] class contains
 const MethodChannel platform = MethodChannel(
@@ -64,7 +65,7 @@ class NotificationService {
   /// Initialize the [FlutterLocalNotificationsPlugin] package
   static Future<void> init() async {
     const initializationSettingsAndroid = AndroidInitializationSettings(
-        // TODO: add your notification icon name e.g. 'app_icon'
+      // TODO: add your notification icon name e.g. 'app_icon'
       '',
     );
 
@@ -112,14 +113,12 @@ class NotificationService {
     final payload = notificationResponse.payload;
 
     try {
-    // TODO: here add your logic to handle notification
-    // by sending the user to a specific page or
-    // showing a dialog or something else
+      // TODO: here add your logic to handle notification
+      // by sending the user to a specific page or
+      // showing a dialog or something else
     } catch (e) {
-    // TODO: handle error
-    // by showing a dialog or something else
-    }
-     
+      // TODO: handle error
+      // by showing a dialog or something else
     }
     switch (notificationResponse.notificationResponseType) {
       case NotificationResponseType.selectedNotification:
@@ -158,7 +157,7 @@ class NotificationService {
   /// Show a notification after every second with the first
   AndroidNotificationDetails androidNotificationDetails =
       const AndroidNotificationDetails(
-    notificationChannel,
+    notificationChannelId,
     notificationChannelName,
     channelDescription: notificationChannelDescription,
     importance: Importance.max,
